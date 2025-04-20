@@ -1,0 +1,29 @@
+# Fetchlet
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://hc-cdn.hel1.your-objectstorage.com/s/v3/54e789e014795d7bfed5ca6784477a4b5bb42298_image.png)
+
+Fetchlet is a mini bookmarklet that lets you send HTTP requests directly from your browser toolbar and displays beautifully formatted JSON responses.
+
+## Installation
+
+Copy the code below, create a new bookmark in your browser, and paste the code as the URL. 
+
+```js
+javascript:void function(){(async function(){function a(a){try{new URL(a)}catch(a){return!1}return!0}function b(a){try{JSON.parse(a)}catch(a){return!1}return!0}async function c(a){const b=await axios.get(a);return b.data}async function d(a,b){const c=await axios.post(a,b);return c.data}async function e(a,b){const c=await axios.put(a,b);return c.data}async function f(a,b){const c=await axios.patch(a,b);return c.data}async function g(a){const b=await axios.delete(a);return b.data}function h(a){return a=JSON.stringify(a,null,2),a=a.replace(/"(.*?)":|"(.*?)"/g,a=>a.endsWith(":")?`<span style="font-weight:bold">${a.substring(0,a.length-1)}</span>:`:`<span style="color:green;">${a}</span>`),a=a.replace(/:\s+\d+/g,a=>(a=a.substring(2),`: <span style="color: blue">${a}</span>`)),a=a.replace(/\{|\}/g,a=>`<span style="color: coral">${a}</span>`),a}const i="exit",j=["GET","POST","PUT","PATCH","DELETE"],k=["POST","PUT","PATCH"];console.log("Bookmarklet loaded!");let l=document.createElement("script");l.setAttribute("src","https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.1/axios.min.js"),document.head.appendChild(l),l.onload=async()=>{console.log("Axios loaded!");let l="";for(;-1===j.indexOf(l);){if(l=prompt("Please enter API method (GET/POST/PUT/PATCH/DELETE)","GET"),l===i)return;l=l.toUpperCase()}let m="";for(;!a(m);)if(m=prompt("Please enter API URL","https://example.com/api?id=123"),m===i)return;let n="";if(-1!==k.indexOf(l)){for(;!b(n);){if(n=prompt("Please enter API body (JSON format)","{\"key\":\"value\"}"),n===i)return;if(""===n)break}n=JSON.parse(n)}let o;"GET"===l?o=await c(m):"POST"===l?o=await d(m,n):"PUT"===l?o=await e(m,n):"PATCH"===l?o=await f(m,n):"DELETE"===l&&(o=await g(m)),formatData=h(o);let p=window.open("","_blank");p.document.open(),p.document.write("<!DOCTYPE html><html><head><meta charset=\"utf\u20118\"><title>JSON Response</title></head>"+`<body><pre>${formatData}</pre><button></button></body></html>`),p.document.close()}})()}();
+```
+
+## Usage
+
+1. Click the Fetchlet bookmarklet in your bookmarks bar.
+
+2. Select an HTTP method from the prompt.
+
+3. Enter the request URL.
+
+4. (For methods with a body) Paste your JSON body when prompted.
+
+5. View the formatted response in a new window.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
