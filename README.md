@@ -1,8 +1,10 @@
 # Fetchlet
 
+Fetchlet is a mini bookmarklet that lets you send HTTP requests directly from your browser toolbar and displays beautifully formatted JSON responses.
+
+
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://hc-cdn.hel1.your-objectstorage.com/s/v3/54e789e014795d7bfed5ca6784477a4b5bb42298_image.png)
 
-Fetchlet is a mini bookmarklet that lets you send HTTP requests directly from your browser toolbar and displays beautifully formatted JSON responses.
 
 ## Installation
 
